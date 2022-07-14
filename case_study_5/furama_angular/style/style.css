@@ -1,0 +1,36 @@
+.card {
+    margin: 20px 0px;
+}
+
+.card img {
+    width: 100%;
+    height: 240px;
+}
+
+#header-nav {
+    background-color: #046056;
+}
+
+.nav-link {
+    color: white;
+}
+
+.nav-link:hover {
+    color: #bebebf;
+}
+
+footer {
+    background-color: #addccf;
+}
+.row.contact{
+    background-color: #addccf;
+    height: 258px;
+}
+
+.row.contact li{
+    list-style: none;
+}
+
+.footer .row {
+    color: #707070;
+}
