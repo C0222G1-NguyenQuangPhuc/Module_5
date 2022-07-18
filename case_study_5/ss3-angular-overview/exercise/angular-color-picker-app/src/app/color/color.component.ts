@@ -8,8 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class ColorComponent implements OnInit {
   color: string = 'color: blue';
 
-
-
   constructor() { }
 
   ngOnInit(): void {
