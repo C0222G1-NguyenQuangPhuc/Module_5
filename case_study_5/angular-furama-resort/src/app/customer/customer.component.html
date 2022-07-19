@@ -1,0 +1,179 @@
+<!--Start List Customer-->
+<div class="content bg-light">
+  <div class="container">
+    <h2>Danh sách khách hàng</h2>
+    <div class="row">
+      <div>
+        <!-- Button Add new modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+          Thêm mới
+        </button>
+      </div>
+    </div>
+    <table class="w-100">
+      <tr>
+        <th>Id</th>
+        <th>Họ và tên</th>
+        <th>Ngày sinh</th>
+        <th>CMND</th>
+        <th>Địa chỉ</th>
+        <th>Loại khách hàng</th>
+        <th>Chức năng</th>
+      </tr>
+      <tr *ngFor="let customer of customerList">
+        <td>{{customer.idCustomer}}</td>
+        <td>{{customer.nameCustomer}}</td>
+        <td>{{customer.dayOfBirth}}</td>
+        <td>{{customer.idCard}}</td>
+        <td>{{customer.address}}</td>
+        <td>{{customer.typeCustomer}}</td>
+        <td>
+          <button type="button" class="btn btn-dark me-md-2" data-bs-toggle="modal" data-bs-target="#editModal">
+            Sửa
+          </button>
+          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+            Xóa
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<!--End List Customer-->
+
+<!--Start Pagination-->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!--End Pagination-->
+
+<!--Start Add new modal-->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="text-align: center; color: #1b1e21" class="modal-title" id="exampleModalLabel">Form thêm mới</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="form-group">
+            <label class="form-label" for="nameCustomer">Tên khách hàng</label>
+            <input type="text" class="form-control"
+                   placeholder="Nhập tên khách hàng" id="nameCustomer" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="dateOfBirth">Ngày sinh</label>
+            <input type="date" id="dateOfBirth" class="form-control"
+                   placeholder="Nhập ngày sinh" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="idCard">CMND</label>
+            <input type="number" id="idCard" class="form-control"
+                   placeholder="Nhập số minh thư" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="address">Địa chỉ</label>
+            <input type="text" id="address" class="form-control"
+                   placeholder="Nhập địa chỉ" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="typeCustomer">Loại khách hàng</label>
+            <select class="form-select" id="typeCustomer">
+              <option value="">Platinium</option>
+              <option value="">Gold</option>
+              <option value="">Silver</option>
+              <option value="">Member</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary w-100">Tạo mới</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Add new modal-->
+
+<!--Start Edit modal-->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="text-align: center; color: #1b1e21" class="modal-title" id="exampleModalLabel1">Form chỉnh sửa</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container">
+          <div class="form-group">
+            <label>Tên khách hàng</label>
+            <input type="text" class="form-control"
+                   placeholder="Nhập tên khách hàng" required>
+          </div>
+          <div class="form-group">
+            <label>Ngày sinh</label>
+            <input type="date" class="form-control"
+                   placeholder="Nhập ngày sinh" required>
+          </div>
+          <div class="form-group">
+            <label>CMND</label>
+            <input type="number" class="form-control"
+                   placeholder="Nhập số minh thư" required>
+          </div>
+          <div class="form-group">
+            <label>Địa chỉ</label>
+            <input type="text" class="form-control"
+                   placeholder="Nhập địa chỉ" required>
+          </div>
+          <div class="form-group">
+            <label>Loại khách hàng</label>
+            <select class="form-select">
+              <option value="">Platinium</option>
+              <option value="">Gold</option>
+              <option value="">Silver</option>
+              <option value="">Member</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary w-100">Chỉnh sửa</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Edit modal-->
+
+<!--Start Delete modal-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Xác nhận thông tin khách hàng</h5>
+      </div>
+      <div class="modal-body">
+        <p>Bạn chắc chắn có xóa muốn khách hàng này không?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-danger">Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Delete modal-->
