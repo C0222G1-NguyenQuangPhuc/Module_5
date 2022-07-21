@@ -1,0 +1,38 @@
+<form
+  [formGroup]="registerForm"
+  (ngSubmit)="submit(registerForm.value)"
+>
+  <label>Email</label>
+  <input type="text" formControlName="email">
+  <span style="color: red" *ngIf="registerForm.hasError('required', 'email')&&registerForm.controls.email.dirty">This input is mandatory</span>
+  <span style="color: red"
+        *ngIf="registerForm.hasError('pattern', 'email')&&registerForm.controls.email.dirty">Wrong format</span>
+  <br>
+  <label>Password</label>
+  <input type="password" formControlName="password">
+  <span style="color: red"
+        *ngIf="registerForm.hasError('required', 'password')&&registerForm.get('password').dirty">Password is required</span>
+  <br>
+  <label>Comfirm password</label>
+  <input type="password" formControlName="confirmPassword">
+  <span *ngIf="passwordMatchError && registerForm.get('confirmPassword').dirty">Don't match</span>
+  <br>
+  <label>Country</label>
+  <select name="" id="" formControlName="country">
+    <option value="Vietnam">Vietnam</option>
+    <option value="Japan">Japan</option>
+    <option value="China">China</option>
+  </select>
+  <br>
+  <label>Age</label>
+  <input type="number" formControlName="age">
+  <br>
+  <label>Email</label>
+  <input type="radio" name="gender" value="Male" formControlName="gender">Male
+  <input type="radio" name="gender" value="Female" formControlName="gender">Female
+  <br>
+  <label>Phone</label>
+  <input type="number" formControlName="phone">
+  <br>
+  <button [disabled]="!registerForm.valid" type="submit">Save</button>
+</form>

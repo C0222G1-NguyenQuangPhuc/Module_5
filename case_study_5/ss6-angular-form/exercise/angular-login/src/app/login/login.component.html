@@ -1,0 +1,12 @@
+<form [formGroup]="loginForm" style="text-align: center">
+  <h2>Login Form</h2>
+  <label>Email:</label>
+  <input type="text" formControlName="email">
+  <span style="color: red" *ngIf="loginForm.hasError('email', 'email') && loginForm.get('email').dirty">Wrong format</span>
+  <br>
+  <label>Password:</label>
+  <input type="password" formControlName="password">
+  <span style="color: red" *ngIf="loginForm.hasError('minlength', 'password') && loginForm.get('password').dirty">Password is not strong enough</span>
+  <br>
+  <button type="button">Login</button>
+</form>
