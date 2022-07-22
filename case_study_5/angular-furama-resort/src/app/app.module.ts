@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { FacilityComponent } from './facility/facility.component';
 import { CustomerComponent } from './customer/customer.component';
+import { ContractComponent } from './contract/contract.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CustomerComponent } from './customer/customer.component';
     FooterComponent,
     FacilityComponent,
     CustomerComponent,
+    ContractComponent,
   ],
   imports: [
     BrowserModule,
