@@ -1,0 +1,74 @@
+<div class="content bg-light">
+  <div class="container">
+    <div class="row">
+      <div>
+        <!-- Button Add new modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
+          Thêm mới
+        </button>
+        <a routerLink="/facility/create" class="btn btn-primary">Add test</a>
+      </div>
+    </div>
+    <div class="row w-100 d-flex">
+      <div class="col-lg-4" *ngFor="let facility of facilityList">
+        <div class="card zoom container-img" style="width: 22rem;" >
+          <img src="{{facility.url}}"
+               class="card-img-top image" alt="...">
+          <div class="middle">
+            <button class="btn btn-success btn-img">Đặt phòng</button>
+          </div>
+          <div class="card-body w-100">
+            <div class="d-flex">
+              <div class="col-lg-6">
+                <h5 class="card-title">{{facility.nameFacility}}</h5>
+                <p class="card-text">Room size: {{facility.areaUse}} m<sup>2</sup></p>
+              </div>
+              <div class="col-lg-6">
+                <a routerLink="/facility/edit/{{facility.idFacility}}" class="btn btn-dark">
+                  Sửa
+                </a>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                  Xóa
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Start Pagination-->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!--End Pagination-->
+<!--Start Add new modal-->
+<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 style="text-align: center; color: #1b1e21" class="modal-title" id="exampleModalLabel">Form thêm mới</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <app-facility-create></app-facility-create>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Add new modal-->

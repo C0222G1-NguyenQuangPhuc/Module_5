@@ -1,0 +1,67 @@
+<div class="container">
+  <form [formGroup]="formEdit">
+    <div class="d-flex">
+      <div class="col-md-6">
+        <div class="container">
+          <div class="form-group">
+            <label>Tên dịch vụ</label>
+            <input type="text" class="form-control" formControlName="nameFacility"
+                   placeholder="Nhập tên dịch vụ" required>
+          </div>
+          <div class="form-group">
+            <label>Diện tích</label>
+            <input placeholder="Nhập diện tích " type="number" class="form-control" formControlName="areaUse">
+          </div>
+          <div class="form-group">
+            <label>Giá</label>
+            <input type="number" class="form-control" placeholder="Nhập giá dịch vụ" formControlName="price">
+          </div>
+          <div class="form-group">
+            <label>Số người tối đa</label>
+            <input type="number" class="form-control" placeholder="Nhập số lượng người" formControlName="maxPeople">
+          </div>
+          <div class="form-group">
+            <label>Kiểu thuê</label>
+            <select class="form-select" formControlName="rentType">
+              <option value="Năm">Năm</option>
+              <option value="Ngày">Ngày</option>
+              <option value="Giờ">Giờ</option>
+              <option value="Tháng">Tháng</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="container">
+          <div class="form-group">
+            <label>Kiểu dịch vụ</label>
+            <select class="form-select">
+              <option value="Villa">Villa</option>
+              <option value="House">House</option>
+              <option value="Room">Room</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tiêu chuẩn dịch vụ</label>
+            <input type="text" class="form-control" placeholder="Nhập tiêu chuẩn dịch vụ" formControlName="standard">
+          </div>
+          <div class="form-group">
+            <label>Diện tích hồ bơi</label>
+            <input type="number" class="form-control" placeholder="Nhập diện tích hồ bơi" formControlName="poolArea">
+          </div>
+          <div class="form-group">
+            <label>Số tầng</label>
+            <input type="number" class="form-control" placeholder="Nhập số tầng" formControlName="numberOfFloor">
+          </div>
+          <div class="form-group">
+            <label>Dịch vụ miễn phí</label>
+            <input type="text" class="form-control" placeholder="Nhập dịch vụ miễn phí" formControlName="free">
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button class="btn btn-primary w-100" (click)="edit()">Chỉnh sửa</button>
+  </div>
+</div>
