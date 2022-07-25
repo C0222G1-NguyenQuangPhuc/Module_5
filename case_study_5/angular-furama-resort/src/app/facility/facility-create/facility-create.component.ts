@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FacilityService} from "../../service/facility.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {RentType} from "../../rent-type/rent-type";
 
 @Component({
   selector: 'app-facility-create',
@@ -9,31 +10,48 @@ import {FormControl, FormGroup} from "@angular/forms";
   styleUrls: ['./facility-create.component.css']
 })
 export class FacilityCreateComponent implements OnInit {
-  formAddNew: FormGroup = new FormGroup({
-    nameFacility: new FormControl(),
-    areaUse: new FormControl(),
-    price: new FormControl(),
-    maxPeople: new FormControl(),
-    rentType: new FormControl(),
-    standard: new FormControl(),
-    description: new FormControl(),
-    numberOfFloor: new FormControl(),
-    poolArea: new FormControl(),
-    free: new FormControl(),
-    url: new FormControl(),
-  });
+  rentTypeList: RentType[];
+
+  formAddNew: FormGroup;
 
   constructor(private facilityService: FacilityService,
-              private activatedRoute: ActivatedRoute,
               private router: Router) { }
 
   ngOnInit(): void {
+    this.getRentTypeList();
+    this.formAddNew = new FormGroup({
+      nameFacility: new FormControl(),
+      areaUse: new FormControl(),
+      price: new FormControl(),
+      maxPeople: new FormControl(),
+      rentType: new FormGroup({
+        rentTypeId: new FormControl('', Validators.required),
+      }),
+      standard: new FormControl(),
+      description: new FormControl(),
+      numberOfFloor: new FormControl(),
+      poolArea: new FormControl(),
+      free: new FormControl(),
+      url: new FormControl(),
+    })
+  }
+
+  getRentTypeList(){
+    this.facilityService.getRentTypeList().subscribe(rentTypeList => {
+      this.rentTypeList = rentTypeList;
+    });
   }
 
   save(){
-    const facility = this.formAddNew.value;
-    this.facilityService.saveFacility(facility);
+    this.facilityService.saveFacility(this.formAddNew.value).subscribe(
+      value => {
+        console.log(value);
+        console.log("success");
+      },
+      error => {
+        console.log(error);
+      })
     this.formAddNew.reset();
-    console.log("Success");
+    this.router.navigateByUrl('/facility/page')
   }
 }

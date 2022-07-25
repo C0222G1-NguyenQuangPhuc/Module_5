@@ -3,6 +3,7 @@
     <div class="d-flex">
       <div class="col-md-6">
         <div class="container">
+          <input type="hidden" formControlName="idFacility">
           <div class="form-group">
             <label>Tên dịch vụ</label>
             <input type="text" class="form-control" formControlName="nameFacility"
@@ -20,13 +21,11 @@
             <label>Số người tối đa</label>
             <input type="number" class="form-control" placeholder="Nhập số lượng người" formControlName="maxPeople">
           </div>
-          <div class="form-group">
+          <div class="form-group" formGroupName="rentType">
             <label>Kiểu thuê</label>
-            <select class="form-select" formControlName="rentType">
-              <option value="Năm">Năm</option>
-              <option value="Ngày">Ngày</option>
-              <option value="Giờ">Giờ</option>
-              <option value="Tháng">Tháng</option>
+            <select class="form-select" formControlName="rentTypeId">
+              <option value="">--Chọn kiểu thuê--</option>
+              <option *ngFor="let rentType of rentTypeList" value="{{rentType.rentTypeId}}">{{rentType.rentTypeName}}</option>
             </select>
           </div>
         </div>

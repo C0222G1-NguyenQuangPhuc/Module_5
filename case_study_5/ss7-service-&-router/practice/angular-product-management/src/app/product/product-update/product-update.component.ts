@@ -10,27 +10,46 @@ import {FormControl, FormGroup} from "@angular/forms";
 })
 export class ProductUpdateComponent implements OnInit {
   productForm: FormGroup;
+  id: number;
+  categories: Category[] = [];
 
   constructor(private productService: ProductService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router) { }
-
-  ngOnInit(): void {
-    const id = Number(this.activatedRoute.snapshot.params.id);
-    const product = this.productService.findById(id);
-    this.productForm = new FormGroup({
-      id: new FormControl(),
-      name: new FormControl(),
-      price: new FormControl(),
-      description: new FormControl()
-    })
-    this.productForm.patchValue(product);
+              private categoryService: CategoryService,
+              private activatedRoute: ActivatedRoute) {
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.getProduct(this.id);
+    });
   }
 
-  update() {
-    let product = this.productForm.value;
-    console.log(product);
-    this.productService.updateById(product);
-    this.router.navigateByUrl('/product/list');
+  ngOnInit() {
+    this.getAllCategory();
+  }
+
+  getProduct(id: number) {
+    return this.productService.findById(id).subscribe(product => {
+      this.productForm = new FormGroup({
+        name: new FormControl(product.name),
+        price: new FormControl(product.price),
+        description: new FormControl(product.description),
+        category: new FormControl(product.category.id)
+      });
+    });
+  }
+
+  updateProduct(id: number) {
+    const product = this.productForm.value;
+    product.category = {
+      id: product.category
+    };
+    this.productService.updateProduct(id, product).subscribe(() => {
+      alert('Cập nhật thành công');
+    });
+  }
+
+  getAllCategory() {
+    this.categoryService.getAll().subscribe(categoires => {
+      this.categories = categoires;
+    });
   }
 }

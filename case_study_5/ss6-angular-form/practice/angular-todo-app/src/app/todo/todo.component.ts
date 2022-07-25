@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Todo } from '../todo';
+import {Component, OnInit} from '@angular/core';
+import {Todo} from '../todo';
 import {FormControl} from "@angular/forms";
-
-let _id = 1;
+import {TodoService} from "../service/todo.service";
 
 @Component({
   selector: 'app-todo',
@@ -14,25 +13,42 @@ export class TodoComponent implements OnInit {
 
   content = new FormControl();
 
-  constructor() { }
+  constructor(private todoService: TodoService) {
+  }
 
   ngOnInit(): void {
+    this.todoService.getAll().subscribe(
+      todos => {
+        this.todos = todos;
+      })
+  }
+
+  toggleTodo(i: number) {
+    this.todos[i].complete = !this.todos[i].complete;
   }
 
   change() {
     const value = this.content.value;
     if (value) {
       const todo: Todo = {
-        id: _id++,
         content: value,
         complete: false
       };
-      this.todos.push(todo);
-      this.content.reset();
+      this.todoService.addNew(todo).subscribe(
+        () => {
+          this.ngOnInit()
+          this.content.reset();
+        }
+      )
     }
   }
 
-  toggleTodo(i: number) {
-    this.todos[i].complete = !this.todos[i].complete;
+  delete(todo: Todo) {
+    this.todoService.delete(todo).subscribe(
+      () => {
+        this.ngOnInit()
+      }
+    )
   }
+
 }

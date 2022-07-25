@@ -2,11 +2,7 @@
   <div class="container">
     <div class="row">
       <div>
-        <!-- Button Add new modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">
-          Thêm mới
-        </button>
-        <a routerLink="/facility/create" class="btn btn-primary">Add test</a>
+        <a routerLink="/facility/create" class="btn btn-primary">Thêm mới</a>
       </div>
     </div>
     <div class="row w-100 d-flex">
@@ -27,7 +23,7 @@
                 <a routerLink="/facility/edit/{{facility.idFacility}}" class="btn btn-dark">
                   Sửa
                 </a>
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                <button type="button" class="btn btn-danger" (click)="getInfo(facility.idFacility, facility.nameFacility)" data-bs-toggle="modal" data-bs-target="#deleteModal">
                   Xóa
                 </button>
               </div>
@@ -57,18 +53,23 @@
   </ul>
 </nav>
 <!--End Pagination-->
-<!--Start Add new modal-->
-<div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+
+<!--Start Delete modal-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 style="text-align: center; color: #1b1e21" class="modal-title" id="exampleModalLabel">Form thêm mới</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title" id="exampleModalLabel2">Xác nhận thông tin dịch vụ</h5>
       </div>
       <div class="modal-body">
-        <app-facility-create></app-facility-create>
+        Bạn chắc chắn có xóa muốn {{facilityName}} này không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" (click)="delete()" data-bs-dismiss="modal" >Xóa</button>
       </div>
     </div>
   </div>
 </div>
-<!--End Add new modal-->
+<!--End Delete modal-->
+

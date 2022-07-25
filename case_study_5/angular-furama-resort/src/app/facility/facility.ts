@@ -4,7 +4,10 @@ export interface Facility {
   areaUse: number,
   price: number,
   maxPeople: number,
-  rentType: string,
+  rentType: {
+    rentTypeId: number,
+    rentTypeName?: string,
+  },
   standard?: string,
   description?: string,
   numberOfFloor?: number,
