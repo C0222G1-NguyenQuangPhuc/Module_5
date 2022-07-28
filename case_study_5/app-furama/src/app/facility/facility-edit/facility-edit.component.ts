@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {FacilityService} from "../../service/facility.service";
-import {ActivatedRoute, Router} from "@angular/router";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {RentType} from "../../rent-type/rent-type";
+import {FacilityService} from '../../service/facility.service';
+import {ActivatedRoute, Router} from '@angular/router';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {RentType} from '../../rent-type/rent-type';
 
 @Component({
   selector: 'app-facility-edit',
@@ -38,30 +38,30 @@ export class FacilityEditComponent implements OnInit {
     this.getRentTypeList();
   }
 
-  getFacility(id: number){
+  getFacility(id: number) {
     this.facilityService.findById(id).subscribe(
       facility => {
       this.formEdit.patchValue(facility);
-        console.log('kk')
-        console.log(facility);
+      console.log('kk');
+      console.log(facility);
     });
   }
 
-  getRentTypeList(){
+  getRentTypeList() {
     this.facilityService.getRentTypeList().subscribe(rentTypeList => {
       this.rentTypeList = rentTypeList;
     });
   }
 
-  edit(){
-    console.log("form value");
+  edit() {
+    console.log('form value');
     console.log(this.formEdit.value);
     this.facilityService.edit(this.formEdit.value).subscribe(
       res => {
         console.log(res);
-        console.log("success");
-    },error => {
-        console.log("error");
+        console.log('success');
+    }, error => {
+        console.log('error');
         console.log(error);
       });
     this.router.navigateByUrl('/facility/page');

@@ -4,7 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from 'rxjs';
 import {Todo} from '../todo';
 
-const API_URL = environment.apiURL;
+const API_URL = `${environment.apiURL}`;
 
 @Injectable({
   providedIn: 'root'

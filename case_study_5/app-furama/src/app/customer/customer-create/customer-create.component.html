@@ -24,7 +24,7 @@
     </div>
     <div class="form-group">
       <label class="form-label">Số điện thoại</label>
-      <input type="number" class="form-control" placeholder="Nhập số điện thoại" formControlName="customerPhone">
+      <input type="text" class="form-control" placeholder="Nhập số điện thoại" formControlName="customerPhone">
       <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.get('customerPhone').touched
                 && formAddNew.hasError('pattern', 'customerPhone')">Số điện thoại sai định dạng</p>
       <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.get('customerPhone').touched
@@ -44,14 +44,15 @@
       <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.get('customerAddress').touched
                 && formAddNew.hasError('required', 'customerAddress')">Vui lòng nhập dịa chỉ</p>
     </div>
-    <div class="form-group" formGroupName="customerType">
+    <div class="form-group">
       <label class="form-label">Loại khách hàng</label>
-      <select class="form-select" fontControlName="customerTypeId">
+      <select class="form-select" formControlName="customerType">
         <option value="">--Chọn loại khách hàng--</option>
-        <option *ngFor="let type of customerTypeList" value="{{type.customerTypeId}}">{{type.customerTypeName}}</option>
+<!--        <option *ngFor="let type of customerTypeList" value="{{type.id}}">{{type.customerTypeName}}</option>-->
+        <option [ngValue]="type" *ngFor="let type of customerTypeList">{{type.customerTypeName}}</option>
       </select>
-      <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.get('customerTypeId').touched
-                && formAddNew.hasError('required', 'customerTypeId')">Vui lòng chọn loại khách hàng</p>
+      <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.get('customerType').touched
+                && formAddNew.get('customerType').hasError('required')">Vui lòng chọn loại khách hàng</p>
     </div>
     <button class="btn btn-primary w-100 mb-5 mt-3" (click)="save()" [disabled]="formAddNew.invalid" >Tạo mới</button>
   </form>

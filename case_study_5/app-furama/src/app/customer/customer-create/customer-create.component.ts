@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {CustomerType} from "../customer-type";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {FacilityService} from "../../service/facility.service";
-import {Router} from "@angular/router";
-import {CustomerService} from "../../service/customer.service";
+import {Component, OnInit} from '@angular/core';
+import {CustomerType} from '../customer-type';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {CustomerService} from '../../service/customer.service';
 
 @Component({
   selector: 'app-customer-create',
@@ -25,30 +24,30 @@ export class CustomerCreateComponent implements OnInit {
       dayOfBirth: new FormControl('', [Validators.required]),
       idCard: new FormControl('', [Validators.required, Validators.pattern('^\\d{9}$')]),
       customerPhone: new FormControl('', [Validators.required, Validators.pattern('(090)[\\d]{7}|(091)[\\d]{7}')]),
-      customerEmail: new FormControl('', [Validators.required, Validators.email]),
+      customerEmail: new FormControl('', [Validators.required]),
       customerAddress: new FormControl('', Validators.required),
-      customerType: new FormGroup({
-        customerTypeId: new FormControl('', Validators.required)
-      })
-    })
+      customerType: new FormControl('', Validators.required)
+    });
   }
 
-  getCustomerTypeList(){
+  getCustomerTypeList() {
     this.customerService.getCustomerTypeList().subscribe(customerTypeList => {
       this.customerTypeList = customerTypeList;
     });
   }
 
-  save(){
+  save() {
+    console.log(this.formAddNew.value);
+
     this.customerService.saveCustomer(this.formAddNew.value).subscribe(
       value => {
         console.log(value);
-        console.log("success");
+        console.log('success');
       },
       error => {
         console.log(error);
-      })
+      });
     this.formAddNew.reset();
-    this.router.navigateByUrl('/customer/list')
+    this.router.navigateByUrl('/customer/list');
   }
 }

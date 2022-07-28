@@ -14,7 +14,10 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {FacilityEditComponent} from './facility/facility-edit/facility-edit.component';
 import {FacilityDeleteComponent} from './facility/facility-delete/facility-delete.component';
 import {HttpClientModule} from '@angular/common/http';
-import { RentTypeComponent } from './rent-type/rent-type.component';
+import {RentTypeComponent} from './rent-type/rent-type.component';
+import {CustomerListComponent} from './customer/customer-list/customer-list.component';
+import {CustomerCreateComponent} from './customer/customer-create/customer-create.component';
+import {CustomerEditComponent} from './customer/customer-edit/customer-edit.component';
 
 @NgModule({
   declarations: [
@@ -29,12 +32,15 @@ import { RentTypeComponent } from './rent-type/rent-type.component';
     FacilityEditComponent,
     FacilityDeleteComponent,
     RentTypeComponent,
+    CustomerListComponent,
+    CustomerCreateComponent,
+    CustomerEditComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

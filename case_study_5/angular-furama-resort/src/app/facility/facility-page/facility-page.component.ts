@@ -13,9 +13,7 @@ export class FacilityPageComponent implements OnInit {
   facilityId: number;
   facilityName: string;
 
-  constructor(private facilityService: FacilityService,
-              private activatedRoute: ActivatedRoute,
-              private router: Router) {
+  constructor(private facilityService: FacilityService) {
   }
 
   ngOnInit(): void {

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FacilityService} from "../../service/facility.service";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {RentType} from "../../rent-type/rent-type";
 
@@ -20,19 +20,19 @@ export class FacilityCreateComponent implements OnInit {
   ngOnInit(): void {
     this.getRentTypeList();
     this.formAddNew = new FormGroup({
-      nameFacility: new FormControl(),
-      areaUse: new FormControl(),
-      price: new FormControl(),
-      maxPeople: new FormControl(),
+      nameFacility: new FormControl('', [Validators.required, Validators.pattern('[A-Za-z\\s]+$')]),
+      areaUse: new FormControl('', [Validators.required, Validators.min(1)]),
+      price: new FormControl('', [Validators.required, Validators.min(1)]),
+      maxPeople: new FormControl('', [Validators.required, Validators.min(1)]),
       rentType: new FormGroup({
         rentTypeId: new FormControl('', Validators.required),
       }),
-      standard: new FormControl(),
-      description: new FormControl(),
-      numberOfFloor: new FormControl(),
-      poolArea: new FormControl(),
-      free: new FormControl(),
-      url: new FormControl(),
+      standard: new FormControl('', Validators.required),
+      description: new FormControl('', Validators.required),
+      numberOfFloor: new FormControl('', [Validators.required, Validators.min(1)]),
+      poolArea: new FormControl('', [Validators.required, Validators.min(1)]),
+      free: new FormControl('', Validators.required),
+      url: new FormControl('', Validators.required),
     })
   }
 

@@ -1,0 +1,166 @@
+{
+  "facility": [
+    {
+      "id": 1,
+      "idFacility": 1,
+      "nameFacility": "OCEAN SUITE",
+      "areaUse": "85.8",
+      "price": "50",
+      "maxPeople": "4",
+      "rentType": {
+        "rentTypeId": "1"
+      },
+      "standard": "Deluxe",
+      "description": "Đang hoạt động",
+      "numberOfFloor": "2",
+      "poolArea": "50",
+      "free": "None",
+      "url": "https://furamavietnam.com/wp-content/uploads/2018/03/%5E224942630D3A5A787C2989A9F5AF4A3E34E6A8CAE8D94FA3D4%5Epimgpsh_fullsize_distr-1047x563.jpg"
+    },
+    {
+      "id": 2,
+      "idFacility": 2,
+      "nameFacility": "OCEAN STUDIO SUITE",
+      "areaUse": "40.1",
+      "price": "100",
+      "maxPeople": "4",
+      "rentType": {
+        "rentTypeId": "1"
+      },
+      "standard": "Suite",
+      "description": "Đang hoạt động",
+      "numberOfFloor": "2",
+      "poolArea": "50",
+      "free": "None",
+      "url": "https://furamavietnam.com/wp-content/uploads/2018/03/Vietnam_Danang_Furama_Ocean-Deluxe-double-bed-M-1047x563.jpg"
+    },
+    {
+      "id": 5,
+      "idFacility": 5,
+      "nameFacility": "GARDEN DELUXE",
+      "areaUse": "43.7",
+      "price": "50",
+      "maxPeople": "2",
+      "rentType": {
+        "rentTypeId": "3"
+      },
+      "standard": "Deluxe",
+      "description": "Đang hoạt động",
+      "numberOfFloor": "2",
+      "poolArea": "50",
+      "free": "None",
+      "url": "https://furamavietnam.com/wp-content/uploads/2018/08/Vietnam_Danang_Furama_Garden-Deluxe-twin-bed-M-1047x563.jpg"
+    },
+    {
+      "id": 6,
+      "idFacility": 6,
+      "nameFacility": "PRESIDENT SUITE",
+      "areaUse": "130",
+      "price": "200",
+      "maxPeople": "4",
+      "rentType": {
+        "rentTypeId": "1"
+      },
+      "standard": "President",
+      "description": "Đang hoạt động",
+      "numberOfFloor": "2",
+      "poolArea": "50",
+      "free": "None",
+      "url": "https://furamavietnam.com/wp-content/uploads/2018/03/Presidential-Suite-M-1047x563.jpg"
+    }
+  ],
+  "rent-type": [
+    {
+      "rentTypeId": "1",
+      "rentTypeName": "Năm"
+    },
+    {
+      "rentTypeId": "2",
+      "rentTypeName": "Tháng"
+    },
+    {
+      "rentTypeId": "3",
+      "rentTypeName": "Ngày"
+    },
+    {
+      "rentTypeId": "4",
+      "rentTypeName": "Giờ"
+    }
+  ],
+  "list-customer": [
+    {
+      "id": 1,
+      "customerId": 1,
+      "customerName": "Quang Phuc",
+      "dayOfBirth": "1998-06-29",
+      "idCard": "201739982",
+      "customerPhone": "0900000000",
+      "customerEmail": "phuc@gmail.com",
+      "customerAddress": "Đà Nẵng",
+      "customerType": {
+        "id": 2,
+        "customerTypeName": "Gold"
+      }
+    },
+    {
+      "id": 2,
+      "customerId": 2,
+      "customerName": "Duy Trung",
+      "dayOfBirth": "2003-10-10",
+      "idCard": "202535982",
+      "customerPhone": "0900000000",
+      "customerEmail": "trung@gmail.com",
+      "customerAddress": "Quảng Nam",
+      "customerType": {
+        "id": 3,
+        "customerTypeName": "Silver"
+      }
+    },
+    {
+      "id": 3,
+      "customerId": 3,
+      "customerName": "Thien Duy",
+      "dayOfBirth": "1995-05-15",
+      "idCard": "199491322",
+      "customerPhone": "0900000000",
+      "customerEmail": "duy@gmail.com",
+      "customerAddress": "Quảng Nam",
+      "customerType": {
+        "id": 2,
+        "customerTypeName": "Gold"
+      }
+    },
+    {
+      "id": 4,
+      "customerId": 4,
+      "customerName": "Nhat Hoang asefeasfase",
+      "dayOfBirth": "1996-04-13",
+      "idCard": "199491322",
+      "customerPhone": "0900000000",
+      "customerEmail": "hoang@gmail.com",
+      "customerAddress": "Đà Nẵng ",
+      "customerType": {
+        "id": 2,
+        "customerTypeName": "Gold"
+      }
+    }
+  ],
+  "customer-type": [
+    {
+      "id": 1,
+      "customerTypeName": "Platinum"
+    },
+    {
+      "id": 2,
+      "customerTypeName": "Gold"
+    },
+    {
+      "id": 3,
+      "customerTypeName": "Silver"
+    },
+    {
+      "id": 4,
+      "customerTypeName": "Member"
+    }
+  ]
+}

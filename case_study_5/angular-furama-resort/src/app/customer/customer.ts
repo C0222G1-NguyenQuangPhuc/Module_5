@@ -1,8 +1,13 @@
 export interface Customer {
-  idCustomer: number,
-  nameCustomer: string,
-  dayOfBirth: string,
-  idCard: number,
-  address: string,
-  typeCustomer: string,
+  customerId?: number,
+  customerName?: string,
+  dayOfBirth?: string,
+  idCard?: string,
+  customerPhone?: string,
+  customerEmail?: string,
+  customerAddress?: string,
+  customerType?: {
+    customerTypeId?: number,
+    customerTypeName?: string
+  };
 }

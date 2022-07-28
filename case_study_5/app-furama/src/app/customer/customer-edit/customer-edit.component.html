@@ -1,59 +1,58 @@
-<div class="container">
-  <form [formGroup]="formEdit">
-    <input type="hidden" formControlName="customerId">
-    <div class="form-group">
-      <label class="form-label">Tên khách hàng</label>
-      <input type="text" class="form-control" placeholder="Nhập tên khách hàng" formControlName="customerName">
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerName').touched
-                && formEdit.hasError('required', 'customerName')">Vui lòng nhập tên khách hàng</p>
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerName').touched
-                && formEdit.hasError('pattern', 'customerName')">Tên sai định dạng</p>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Ngày sinh</label>
-      <input type="date" class="form-control" placeholder="Nhập ngày sinh" formControlName="dayOfBirth">
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('dayOfBirth').touched
-                && formEdit.hasError('required', 'dayOfBirth')">Vui lòng ngày sinh</p>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Số chứng minh thư</label>
-      <input type="number" class="form-control" placeholder="Nhập số chứng minh thư" formControlName="idCard">
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('idCard').touched
-                && formEdit.hasError('required', 'idCard')">Vui lòng nhập số chứng minh thư</p>
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('idCard').touched
-                && formEdit.hasError('pattern', 'idCard')">Số chứng minh thư sai định dạng</p>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Số điện thoại</label>
-      <input type="number" class="form-control" placeholder="Nhập số điện thoại" formControlName="customerPhone">
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerPhone').touched
-                && formEdit.hasError('pattern', 'customerPhone')">Số điện thoại sai định dạng</p>
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerPhone').touched
-                && formEdit.hasError('required', 'customerPhone')">Vui lòng nhập số điện thoại</p>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Email</label>
-      <input type="text" class="form-control" placeholder="Nhập địa chỉ email" formControlName="customerEmail">
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerEmail').touched
-                && formEdit.hasError('required', 'customerEmail')">Vui lòng nhập dịa chỉ email</p>
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerEmail').touched
-                && formEdit.hasError('pattern', 'customerEmail')">Email sai định dạng</p>
-    </div>
-    <div class="form-group">
-      <label class="form-label">Địa chỉ</label>
-      <input type="text" class="form-control" placeholder="Nhập địa chỉ" formControlName="customerAddress">
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerAddress').touched
-                && formEdit.hasError('required', 'customerAddress')">Vui lòng nhập dịa chỉ</p>
-    </div>
-    <div class="form-group" formGroupName="customerType">
-      <label class="form-label">Loại khách hàng</label>
-      <select class="form-select" formControlName="customerTypeId">
-        <option value="">--Chọn loại khách hàng--</option>
-        <option *ngFor="let type of customerTypeList" value="{{type.customerTypeId}}">{{type.customerTypeName}}</option>
-      </select>
-      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerTypeId').touched
-                && formEdit.hasError('required', 'customerTypeId')">Vui lòng chọn loại khách hàng</p>
-    </div>
-    <button class="btn btn-primary w-100 mb-5 mt-3" (click)="edit()" [disabled]="formEdit.invalid" >Chỉnh sửa</button>
-  </form>
+<div class="container-fluid bg-black bg-opacity-10">
+  <div class="container w-50 bg-light">
+    <form [formGroup]="formEdit" class="justify-content-center">
+      <input type="hidden" formControlName="id">
+      <div class="form-group">
+        <label class="form-label">Tên khách hàng</label>
+        <input type="text" class="form-control" placeholder="Nhập tên khách hàng" formControlName="customerName">
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerName').touched&& formEdit.hasError('required', 'customerName')">Vui lòng nhập tên khách hàng</p>
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerName').touched&& formEdit.hasError('pattern', 'customerName')">Tên sai định dạng</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Ngày sinh</label>
+        <input type="date" class="form-control" placeholder="Nhập ngày sinh" formControlName="dayOfBirth">
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('dayOfBirth').touched && formEdit.hasError('required', 'dayOfBirth')">Vui lòng ngày sinh</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Số chứng minh thư</label>
+        <input type="number" class="form-control" placeholder="Nhập số chứng minh thư" formControlName="idCard">
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('idCard').touched && formEdit.hasError('required', 'idCard')">Vui lòng nhập số chứng minh thư</p>
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('idCard').touched && formEdit.hasError('pattern', 'idCard')">Số chứng minh thư sai định dạng</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Số điện thoại</label>
+        <input type="text" class="form-control" placeholder="Nhập số điện thoại" formControlName="customerPhone">
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerPhone').touched && formEdit.hasError('pattern', 'customerPhone')">Số điện thoại sai định dạng</p>
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerPhone').touched && formEdit.hasError('required', 'customerPhone')">Vui lòng nhập số điện thoại</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="text" class="form-control" placeholder="Nhập địa chỉ email" formControlName="customerEmail">
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerEmail').touched && formEdit.hasError('required', 'customerEmail')">Vui lòng nhập dịa chỉ email</p>
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerEmail').touched && formEdit.hasError('pattern', 'customerEmail')">Email sai định dạng</p>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Địa chỉ</label>
+        <input type="text" class="form-control" placeholder="Nhập địa chỉ" formControlName="customerAddress">
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerAddress').touched && formEdit.hasError('required', 'customerAddress')">Vui lòng nhập dịa chỉ</p>
+      </div>
+      <!--    <div class="form-group" formGroupName="customerType">-->
+      <!--      <label class="form-label">Loại khách hàng</label>-->
+      <!--      <select class="form-select" formControlName="id">-->
+      <!--        <option value="">&#45;&#45;Chọn loại khách hàng&#45;&#45;</option>-->
+      <!--        <option  *ngFor="let type of customerTypeList" value="{{type.id}}">{{type.customerTypeName}}</option>-->
+      <!--      </select>-->
+      <!--      <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerType').touched && formEdit.get('customerType').hasError('required')">Vui lòng chọn loại khách hàng</p>-->
+      <!--    </div>-->
+      <div class="form-group">
+        <label class="form-label">Loại khách hàng</label>
+        <select class="form-select" formControlName="customerType" [compareWith]="compareWithId">
+          <option value="">--Chọn loại khách hàng--</option>
+          <option  *ngFor="let type of customerTypeList" [ngValue]="type">{{type.customerTypeName}}</option>
+        </select>
+        <p style="color: red; font-size: 0.9rem" *ngIf="formEdit.get('customerType').touched && formEdit.get('customerType').hasError('required')">Vui lòng chọn loại khách hàng</p>
+      </div>
+      <button class="btn btn-primary w-100 mb-5 mt-3" (click)="edit()" [disabled]="!formEdit.valid" >Chỉnh sửa</button>
+    </form>
+  </div>
 </div>

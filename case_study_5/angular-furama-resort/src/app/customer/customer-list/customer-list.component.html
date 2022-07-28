@@ -1,0 +1,83 @@
+<div class="content bg-light">
+  <div class="container">
+    <h2>Danh sách khách hàng</h2>
+    <div class="row">
+      <div>
+        <!-- Button Add new modal -->
+        <button type="button" class="btn btn-primary" routerLink="/customer/create">
+          Thêm mới
+        </button>
+      </div>
+    </div>
+    <table class="w-100">
+      <tr>
+        <th>ID</th>
+        <th>Họ và tên</th>
+        <th>Ngày sinh</th>
+        <th>CMND</th>
+        <th>Số điện thoại</th>
+        <th>Email</th>
+        <th>Địa chỉ</th>
+        <th>Loại khách hàng</th>
+        <th>Chức năng</th>
+      </tr>
+      <tr *ngFor="let customer of customerList">
+        <td>{{customer.customerId}}</td>
+        <td>{{customer.customerName}}</td>
+        <td>{{customer.dayOfBirth}}</td>
+        <td>{{customer.idCard}}</td>
+        <td>{{customer.customerPhone}}</td>
+        <td>{{customer.customerEmail}}</td>
+        <td>{{customer.customerAddress}}</td>
+        <td>{{customer.customerType.customerTypeName}}</td>
+        <td>
+          <a routerLink="/customer/edit/{{customer.customerId}}" class="btn btn-dark">
+            Sửa
+          </a>
+          <button type="button" class="btn btn-danger" (click)="getInfo(customer.customerId, customer.customerName)" data-bs-toggle="modal" data-bs-target="#deleteModal">
+            Xóa
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!--Start Pagination-->
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item"><a class="page-link" href="#">2</a></li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+<!--End Pagination-->
+
+<!--Start Delete modal-->
+<div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel2">Xác nhận thông tin khách hàng</h5>
+      </div>
+      <div class="modal-body">
+        Bạn chắc chắn có xóa muốn khách hàng <span style="font-weight: bold; color: #ff4146">{{customerName}}</span> không?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-primary" (click)="delete()" data-bs-dismiss="modal" >Xóa</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--End Delete modal-->
