@@ -1,0 +1,101 @@
+<div class="container">
+  <form [formGroup]="formAddNew">
+    <div class="d-flex">
+      <div class="col-md-6">
+        <div class="container">
+          <div class="form-group">
+            <label>Tên dịch vụ</label>
+            <input type="text" class="form-control" formControlName="nameFacility"
+                   placeholder="Nhập tên dịch vụ" required>
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('pattern', 'nameFacility')
+                && formAddNew.get('nameFacility').touched">Tên dịch vụ không đúng định dạng</p>
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'nameFacility')
+                && formAddNew.get('nameFacility').touched">Vui lòng nhập tên dịch vụ</p>
+          </div>
+          <div class="form-group">
+            <label>Diện tích phòng</label>
+            <input placeholder="Nhập diện tích " type="number" class="form-control" formControlName="areaUse">
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'areaUse')
+                && formAddNew.get('areaUse').touched">Vui lòng nhập diện tích sử dụng</p>
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('min', 'areaUse')
+                && formAddNew.get('areaUse').touched">Vui lòng nhập số dương</p>
+          </div>
+          <div class="form-group">
+            <label>Giá</label>
+            <input type="number" class="form-control" placeholder="Nhập giá dịch vụ" formControlName="price">
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'price')
+                && formAddNew.get('price').touched">Vui lòng nhập giá phòng</p>
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('min', 'price')
+                && formAddNew.get('price').touched">Vui lòng nhập số dương</p>
+          </div>
+          <div class="form-group">
+            <label>Số người tối đa</label>
+            <input type="number" class="form-control" placeholder="Nhập số lượng người" formControlName="maxPeople">
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('min', 'maxPeople')
+                && formAddNew.get('maxPeople').touched">Vui lòng nhập số dương</p>
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'maxPeople')
+                && formAddNew.get('maxPeople').touched">Vui lòng nhập số dương</p>
+          </div>
+          <div class="form-group" formGroupName="rentType">
+            <label>Kiểu thuê</label>
+            <select class="form-select" formControlName="rentTypeId">
+              <option value="">--Chọn kiểu thuê--</option>
+              <option *ngFor="let rentType of rentTypeList" value="{{rentType.rentTypeId}}">{{rentType.rentTypeName}}</option>
+            </select>
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.get('rentType').hasError('required', 'rentTypeId')
+                && formAddNew.get('rentType').get('rentTypeId').touched">Vui lòng chọn kiểu thuê</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="container">
+          <div class="form-group">
+            <label>Kiểu dịch vụ</label>
+            <select class="form-select">
+              <option value="Villa">Villa</option>
+              <option value="House">House</option>
+              <option value="Room">Room</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tiêu chuẩn dịch vụ</label>
+            <input type="text" class="form-control" placeholder="Nhập tiêu chuẩn dịch vụ" formControlName="standard">
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'standard')
+                && formAddNew.get('standard').touched">Vui lòng nhập tiêu chuẩn phòng</p>
+          </div>
+          <div class="form-group">
+            <label>Diện tích hồ bơi</label>
+            <input type="number" class="form-control" placeholder="Nhập diện tích hồ bơi" formControlName="poolArea">
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'poolArea')
+                && formAddNew.get('poolArea').touched">Vui lòng nhập diện tích hồ bơi</p>
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('min', 'poolArea')
+                && formAddNew.get('poolArea').touched">Vui lòng nhập số dương</p>
+          </div>
+          <div class="form-group">
+            <label>Số tầng</label>
+            <input type="number" class="form-control" placeholder="Nhập số tầng" formControlName="numberOfFloor">
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'numberOfFloor')
+                && formAddNew.get('numberOfFloor').touched">Vui lòng nhập diện tích hồ bơi</p>
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('min', 'numberOfFloor')
+                && formAddNew.get('numberOfFloor').touched">Vui lòng nhập số dương</p>
+          </div>
+          <div class="form-group">
+            <label>Dịch vụ miễn phí</label>
+            <input type="text" class="form-control" placeholder="Nhập dịch vụ miễn phí" formControlName="free">
+            <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'free')
+                && formAddNew.get('free').touched">Vui lòng nhập dịch vụ miễn phí</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <label>Hình ảnh dịch vụ</label>
+      <input type="text" class="form-control" formControlName="url" placeholder="Nhập đường dẫn hình ảnh dịch vụ">
+      <p style="color: red; font-size: 0.9rem" *ngIf="formAddNew.hasError('required', 'url')
+                && formAddNew.get('url').touched">Vui lòng nhập đường dẫn hình ảnh</p>
+    </div>
+  </form>
+  <div class="modal-footer">
+    <button class="btn btn-primary w-100" (click)="save()" [disabled]="formAddNew.invalid" >Tạo mới</button>
+  </div>
+</div>
