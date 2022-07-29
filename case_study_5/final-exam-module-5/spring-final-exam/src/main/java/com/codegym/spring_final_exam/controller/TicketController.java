@@ -38,22 +38,24 @@ public class TicketController {
         return new ResponseEntity<>(busList, HttpStatus.OK);
     }
 
-    @PostMapping("/list-ticket/create")
+    @PostMapping("/ticket/create")
     public ResponseEntity<?> createTicket(@Valid @RequestBody Ticket ticket) {
         iTicketService.save(ticket);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-    @PutMapping("/order")
+    @PutMapping("/ticket/order")
     public ResponseEntity<?> orderTicket(@RequestBody Ticket ticket ){
         iTicketService.save(ticket);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/search-destination/{txt}")
-    public ResponseEntity<?> searchByDestination(@RequestParam(name = "page", defaultValue = "0") int page, @PathVariable String txt) {
+    @GetMapping("/search/{des}&{arrive}")
+    public ResponseEntity<?> searchByDestination(@RequestParam(name = "page", defaultValue = "0") int page,
+                                                 @PathVariable("des") String des,
+                                                 @PathVariable("arrive") String arrive) {
         Sort sort = Sort.by("ticket_id").ascending();
-        Page<Ticket> tickets = iTicketService.searchByDestination(PageRequest.of(page, 100, sort), txt);
+        Page<Ticket> tickets = iTicketService.searchByDestination(PageRequest.of(page, 100, sort), des, arrive);
         return new ResponseEntity<>(tickets, HttpStatus.OK);
     }
 }

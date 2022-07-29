@@ -25,7 +25,7 @@ public class TicketService implements ITicketService {
     }
 
     @Override
-    public Page<Ticket> searchByDestination(Pageable pageable, String txt) {
-        return iTicketRepository.searchByDestination(pageable, "%" + txt + "%");
+    public Page<Ticket> searchByDestination(Pageable pageable, String des, String arrive) {
+        return iTicketRepository.searchByDestination(pageable, "%" + des + "%", "%" + arrive + "%");
     }
 }

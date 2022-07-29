@@ -24,6 +24,6 @@ public interface ITicketRepository extends JpaRepository<Ticket, Integer> {
     @Query(value = "update ticket set quantity = (quantity - 1) where ticket_id = :id", nativeQuery = true)
     void update(@Param("id") Integer id);
 
-    @Query(value = "select * from ticket where destination like :txt", nativeQuery = true)
-    Page<Ticket> searchByDestination(Pageable pageable, @Param("txt") String txt);
+    @Query(value = "select * from ticket where destination like :des and arrive like :arrive", nativeQuery = true)
+    Page<Ticket> searchByDestination(Pageable pageable, @Param("des") String des, @Param("arrive") String arrive);
 }

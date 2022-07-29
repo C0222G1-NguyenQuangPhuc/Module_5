@@ -10,5 +10,6 @@ public interface ITicketService {
 
     void save(Ticket ticket);
 
-    Page<Ticket> searchByDestination(Pageable pageable, String txt);
+    Page<Ticket> searchByDestination(Pageable pageable, String des, String arrive);
+
 }
